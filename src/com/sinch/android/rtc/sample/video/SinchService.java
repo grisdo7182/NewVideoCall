@@ -1,26 +1,26 @@
 package com.sinch.android.rtc.sample.video;
 
-import com.sinch.android.rtc.AudioController;
-import com.sinch.android.rtc.ClientRegistration;
-import com.sinch.android.rtc.Sinch;
-import com.sinch.android.rtc.SinchClient;
-import com.sinch.android.rtc.SinchClientListener;
-import com.sinch.android.rtc.SinchError;
-import com.sinch.android.rtc.video.VideoController;
-import com.sinch.android.rtc.calling.Call;
-import com.sinch.android.rtc.calling.CallClient;
-import com.sinch.android.rtc.calling.CallClientListener;
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.sinch.android.rtc.AudioController;
+import com.sinch.android.rtc.ClientRegistration;
+import com.sinch.android.rtc.Sinch;
+import com.sinch.android.rtc.SinchClient;
+import com.sinch.android.rtc.SinchClientListener;
+import com.sinch.android.rtc.SinchError;
+import com.sinch.android.rtc.calling.Call;
+import com.sinch.android.rtc.calling.CallClient;
+import com.sinch.android.rtc.calling.CallClientListener;
+import com.sinch.android.rtc.video.VideoController;
+
 public class SinchService extends Service {
 
-    private static final String APP_KEY = "enter-application-key";
-    private static final String APP_SECRET = "enter-application-secret";
+    private static final String APP_KEY = "2f3a9776-902a-4524-99e6-75d9d58760df";
+    private static final String APP_SECRET = "jKsQCjfZz06Do7ImCndv/A==";
     private static final String ENVIRONMENT = "sandbox.sinch.com";
 
     public static final String CALL_ID = "CALL_ID";
