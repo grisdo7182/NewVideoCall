@@ -1,9 +1,7 @@
 package com.sinch.android.rtc.sample.video;
 
-import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,10 +19,6 @@ import com.sinch.android.rtc.calling.CallState;
 import com.sinch.android.rtc.video.VideoCallListener;
 import com.sinch.android.rtc.video.VideoController;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
@@ -95,38 +89,6 @@ public class CallScreenActivity extends BaseActivity {
         mCallId = getIntent().getStringExtra(SinchService.CALL_ID);
         if (savedInstanceState == null) {
             mCallStart = System.currentTimeMillis();
-        }
-    }
-
-    {
-        Button captureButton = (Button) findViewById(R.id.captureButton);
-
-    captureButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Bitmap bitmap = takeScreenshot();
-            saveBitmap(bitmap);
-
-        }
-    });}
-    public Bitmap takeScreenshot() {
-        View rootView = findViewById(android.R.id.content).getRootView();
-        rootView.setDrawingCacheEnabled(true);
-        return rootView.getDrawingCache();
-    }
-
-    public void saveBitmap(Bitmap bitmap) {
-        File imagePath = new File(Environment.getExternalStorageDirectory() + "/screenshot.png");
-        FileOutputStream fos;
-        try {
-            fos = new FileOutputStream(imagePath);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-            fos.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            Log.e("GREC", e.getMessage(), e);
-        } catch (IOException e) {
-            Log.e("GREC", e.getMessage(), e);
         }
     }
 
@@ -214,7 +176,7 @@ public class CallScreenActivity extends BaseActivity {
         if (vc != null) {
             RelativeLayout localView = (RelativeLayout) findViewById(R.id.localVideo);
             localView.addView(vc.getLocalView());
-            localView.setOnClickListener(new View.OnClickListener() {
+            localView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     vc.toggleCaptureDevicePosition();
